@@ -87,7 +87,7 @@ You must wrap the usage of these methods in a closure in order to store data.
 
 ## Tests
 Magic uses the Vows test suite. please refer to vowsjs.org for installation.
-To run the tests, simply type ./runTests.js from the `node_modules/magic`
+To run the tests, simply type ./runTest.js from the `node_modules/magic`
 folder.
 
 ## Contributing
