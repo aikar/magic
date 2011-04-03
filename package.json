@@ -1,0 +1,23 @@
+{
+  "name": "magic",
+  "description": "Magic Method/getter/setters for Node.JS",
+  "version": "1.0.0",
+  "homepage": "http://aikar.co/magic",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/aikar/magic.git"
+  },
+  "author": "Aikar <aikar@aikar.co> (http://aikar.co)",
+  "main": "lib/magic.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "runTests.js",
+    "preinstall": "make makelibs",
+    "preuninstall": "make clean"
+  },
+  "engines": {
+    "node": ">=4 || 5"
+  }
+}
