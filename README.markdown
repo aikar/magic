@@ -11,7 +11,7 @@ V8 JS Land by default.
 Magic is designed to implement similar functionality as PHP's `__set` and `__get`
 methods.
 
-MagicObjects by themselves they are useless, its up to you as a developer to
+MagicObjects by themselves are useless, its up to you as a developer to
 implement them in a useful way, primarily for Promise based implementations.
 ## Requirements
 This functionality is done through V8 C++ calls and **MUST BE COMPILED**.
