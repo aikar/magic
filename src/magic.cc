@@ -24,7 +24,7 @@
 using namespace v8;
 using namespace node;
 
-static Persistent<FunctionTemplate> object_temp;
+static Persistent<ObjectTemplate> object_temp;
 
 Handle<Value> magic_Getter(Local<String> name, const AccessorInfo& info) {
     Handle<Object> object = info.Holder();
@@ -63,10 +63,12 @@ Handle<Value> magic_Setter(uint32_t  name, Local<Value> value, const AccessorInf
  * Sets magic getter/setters on object.
  */
 static Handle<Value> node_magic(const Arguments &args) {
-    Local<Object> object = args.This();
+    HandleScope scope;
+
+    Handle<Object> object = object_temp->NewInstance();
     object->SetInternalField(0, args[0]);
     object->SetInternalField(1, args[1]);
-    return args.This();
+    return scope.Close(object);
 }
 
 /**
@@ -74,12 +76,11 @@ static Handle<Value> node_magic(const Arguments &args) {
  */
 extern "C" void init(Handle<Object> target) {
     HandleScope scope;
-    Local<FunctionTemplate> t = FunctionTemplate::New(node_magic);
-    object_temp = Persistent<FunctionTemplate>::New(t);
-    object_temp->InstanceTemplate()->SetInternalFieldCount(2);
-    object_temp->SetClassName(String::NewSymbol("MagicObject"));
-    object_temp->InstanceTemplate()->SetNamedPropertyHandler(magic_Getter, magic_Setter);
-    object_temp->InstanceTemplate()->SetIndexedPropertyHandler(magic_Getter, magic_Setter);
     
-    target->Set(String::NewSymbol("MagicObject"), object_temp->GetFunction());
+    object_temp = Persistent<ObjectTemplate>::New(ObjectTemplate::New());
+    object_temp->SetInternalFieldCount(2);
+    object_temp->SetNamedPropertyHandler(magic_Getter, magic_Setter);
+    object_temp->SetIndexedPropertyHandler(magic_Getter, magic_Setter);
+    
+    NODE_SET_METHOD(target, "magic", node_magic);
 }

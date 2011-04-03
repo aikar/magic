@@ -19,6 +19,8 @@
 // THE SOFTWARE.
 
 var magic = require('../');
+
+// Basic example
 var obj = magic(function(name) {
   console.log('Request to get', name)
 }, function(name, val) {
@@ -26,7 +28,9 @@ var obj = magic(function(name) {
 });
 var foo = obj.foo;
 obj.bar = 1;
-console.log(obj);
+
+
+// Config chain example
 function configChain() {
   var requestChain = [];
   function getter(name) {
