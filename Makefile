@@ -1,10 +1,8 @@
-CWD = $(shell pwd -P)
 NODE_WAF ?= node-waf
 NODE_SRC_DIR ?= $(HOME)/src/node
 CFLAGS ?= -g -Wall
 CXXFLAGS ?= -g -Wall
 
-MODULE_LIB_DIR = $(CWD)/lib
 # We need to build position-independent code regardless of platform
 CFLAGS += -fPIC
 CXXFLAGS += -fPIC
@@ -21,7 +19,7 @@ makelibs: magic cleanbuild
 magic:
 	cd src && \
 		$(NODE_WAF) configure build && \
-		cp ../build/default/magicBindings.node $(MODULE_LIB_DIR)
+		cp -f ../build/default/magicBindings.node ../lib
 	
 cleanbuild:
 	rm -rf build src/.lock-wscript
