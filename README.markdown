@@ -13,6 +13,7 @@ methods.
 
 MagicObjects by themselves are useless, its up to you as a developer to
 implement them in a useful way, primarily for Promise based implementations.
+
 ## Requirements
 This functionality is done through V8 C++ calls and **MUST BE COMPILED**.
 If you compiled Node.JS from source, you likely already have all dependencies.
@@ -97,6 +98,24 @@ and submit pull requests back to me.
 Please follow my same coding styles (spaces, no tabs!) and add new test for new
 functionality.
 
+## Harmony Proxies
+
+I've found out afterwards that this functionality is actually brought in the
+spec for ES5 Harmony Proxies. I will not be conforming to the Harmony Proxies
+spec as a module has already been written to do that.
+
+If your wanting the full Harmony Proxy spec, then use this lib:
+
+https://github.com/samshull/node-proxy
+
+Magic will be a simpler and more basic implementation, however I will expand
+magic to do things outside of the Harmony Proxy spec too.
+
+If you only need the basic concept of getter/setters, then Magic will do the
+job. If you want the extra features of Harmony Proxies, then use the above,
+however some of the features will likely end up in Magic too, just I want
+Magic to be free to expand to what ever will make it better, including features
+NOT part of the Harmony Proxy spec.
 
 ## License
 > The MIT License
