@@ -1,5 +1,7 @@
 # Magic
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/aikar/magic.svg)](https://greenkeeper.io/)
+
 ## About
 Magic is designed to provide magic objects that have global Getters and Setters,
 Designed to let you write even better Promise implementations.
